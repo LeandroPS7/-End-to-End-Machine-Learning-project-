@@ -68,11 +68,9 @@ Feature importance is more evenly distributed after removing `vote_average`, wit
 ---
 
 ## References  
-**Top 5 Feature Importances (Final Model):**
+It 7
+![image](https://github.com/user-attachments/assets/802f415a-75ee-4efb-b918-e6af44972846)
 
-- `release_year`
-- `runtime`
-- `budget`
-- `top_genre_Drama`
-- `top_studio_Warner Bros.`
+It 8
+![image](https://github.com/user-attachments/assets/973cb54e-4f8c-404d-9848-1167b1237d46)
 
