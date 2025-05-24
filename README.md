@@ -17,8 +17,8 @@ Feature importance is more evenly distributed after removing `vote_average`, wit
 
 | Name           | URL                                                                 |
 |----------------|----------------------------------------------------------------------|
-| Huggingface    | [Huggingface Space]([https://huggingface.co/spaces/pereilea/movie_rating_guesser]) |
-| Code           | [GitHub Repository](https://github.com/DEIN_USERNAME/filmrating-ml-project) |
+| Huggingface    | [Huggingface Space](https://huggingface.co/spaces/pereilea/movie_rating_guesser) |
+| Code           | [GitHub Repository](https://github.com/LeandroPS7/-End-to-End-Machine-Learning-project-) |
 
 ---
 
