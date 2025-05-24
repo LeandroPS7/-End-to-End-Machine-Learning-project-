@@ -59,17 +59,18 @@ Feature importance is more evenly distributed after removing `vote_average`, wit
 |-----------|----------------------|-------------------------------|----------------------------------------------|-----------------------------------------------------------|--------------------------------------------------------------|
 | 1         | Linear Regression, RF| LR: 1.02, RF: 0.96                         | `budget`, `runtime` | Baseline features should provide some signal              | Models show limited predictive power                        |
 | 2         | Linear Regression, RF| LR: 1.02, RF: 0.96            | + `budget_per_minute`                         | Budget per minute might correlate better                  | same as It 1                            |
-| 3         | Linear Regression, RF| LR: 1.00, RF: 0.95            | + `release_year`, `title_length`, `vote_ratio` | Time and vote strength should add signal                  | No major improvement                                        |
+| 3         | Linear Regression, RF| LR: 1.00, RF: 0.95            | + `release_year`, `title_length`, `vote_ratio` | Time and vote strength should improve results                  | No major improvement                                        |
 | 4         | Linear Regression, RF| both ~0.95                    | Only `vote_average`                           | Test if `vote_average` alone is strong enough             | Surprisingly powerful alone                                |
 | 5         | Linear Regression, RF| both ~0.95                    | + top genres and studios                      | Content/producer info might be useful                     | Same RMSE, but more diverse features                       |
-| 6         | Linear Regression, RF| RF: Train: 0.92, Test: 0.95   | Combined all features                         | Combination may stabilize variance                        | Stable, but `vote_average` dominates                       |
-| 7         | RF + GridSearch      | Train: 0.93, Test: 0.95       | Same as It. 6 + tuned hyperparams             | Optimization should help                                 | Best performing model, but no breakthrough                |
+| 6         | Linear Regression, RF| RF: Train: 0.92, Test: 0.95   | Combined all features (- budget_per_minute / + revenue)                         | Combination may stabilize variance                        | Stable, but `vote_average` dominates                       |
+| 7         | RF + GridSearch      | Train: 0.93, Test: 0.95       | Same as It. 6 + tuned hyperparams             | Optimization should help                                 | Best performing model, but same as It 6                |
 | 8         | RF (no `vote_average`)| Train: 0.94, Test: 0.95       | Without `vote_average`                        | Fairer feature distribution for app deployment            | Same performance, better feature spread → used in app  |
 ---
 
 ## References  
 It 7
-![image](https://github.com/user-attachments/assets/802f415a-75ee-4efb-b918-e6af44972846)
+![image](https://github.com/user-attachments/assets/80e088a1-dcdd-46a2-b0e1-20aae1e2c211)
+
 
 It 8
 ![image](https://github.com/user-attachments/assets/b0b778ae-3a31-452e-aff2-0a6d3c4da3f3)
