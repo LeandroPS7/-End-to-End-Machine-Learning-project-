@@ -72,5 +72,6 @@ It 7
 ![image](https://github.com/user-attachments/assets/802f415a-75ee-4efb-b918-e6af44972846)
 
 It 8
-![image](https://github.com/user-attachments/assets/973cb54e-4f8c-404d-9848-1167b1237d46)
+![image](https://github.com/user-attachments/assets/b0b778ae-3a31-452e-aff2-0a6d3c4da3f3)
+
 
