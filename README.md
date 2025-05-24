@@ -24,11 +24,11 @@ Feature importance is more evenly distributed after removing `vote_average`, wit
 
 ## Data Sources and Features Used Per Source
 
-| Data Source       | Features                                                                 |
-|-------------------|--------------------------------------------------------------------------|
-| Movie Metadata    | `budget`, `runtime`, `release_date`, `title`, `vote_count`, `genres`, `production_companies`, `rating` |
+| Data Source                                                                                  | Features Used                                                              |
+|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| [TMDB Movie Metadata](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata)              | `budget`, `runtime`, `release_date`, `title`, `genres`, `production_companies`, `vote_average`, `vote_count` |
+| [MovieLens 20M Dataset](https://www.kaggle.com/datasets/grouplens/movielens-20m-dataset)     | `movieId`, `tmdbId`, `rating` (used as target), `userId`, `timestamp` *(linked via tmdbId)* |
 
----
 
 ## Features Created
 
