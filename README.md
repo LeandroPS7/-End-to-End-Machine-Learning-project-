@@ -45,27 +45,26 @@ Feature importance is more evenly distributed after removing `vote_average`, wit
 ## Model Training
 
 ### Amount of Data  
-~100,000 movies in raw dataset  
-~70,000 after filtering and removing missing values
+200,000 movies 
 
 ### Data Splitting Method (Train/Validation/Test)  
-Initial 80/20 split → Cross-validation used during GridSearch (3-fold)
+**Train/Test Split:** 80/20
+****Cross-Validation:** 5-fold CV for iterations 1–5, GridSearch in iteration 7
 
 ---
 
-## Performance
+## 📈 Performance Table
 
-| It. Nr | Model             | Performance                             | Features                            | Description                           |
-|--------|-------------------|------------------------------------------|-------------------------------------|----------------------------------------|
-| 1      | Linear Regression | Train RMSE: 0.96, Test RMSE: 1.01        | budget, runtime, vote_average       | Baseline                              |
-| 2      | Random Forest     | Train RMSE: 0.63, Test RMSE: 0.99        | Same as It. 1                       | Overfitting                           |
-| 3      | Random Forest     | Test RMSE: 0.98                          | budget, runtime, release_year, title_length, vote_ratio | New features added |
-| 4      | Random Forest     | Test RMSE: 0.96                          | budget, runtime, vote_average       | Vote average re-tested                |
-| 5      | Random Forest     | Test RMSE: 0.95                          | + top 10 genres + top 10 studios    | Feature expansion                     |
-| 6      | Random Forest     | Test RMSE: 0.95                          | Without vote_average                | Better generalization                 |
-| 7      | GridSearch RF     | Test RMSE: 0.95                          | Same as It. 6                       | Optimized hyperparameters             |
-| 8      | Final RF Model    | Test RMSE: 0.95                          | Same as It. 7                       | Used for Hugging Face deployment      |
-
+| Iteration | Model(s)             | RMSE (CV/Train/Test)          | Features Summary                             | Hypothesis                                               | Result                                                       |
+|-----------|----------------------|-------------------------------|----------------------------------------------|-----------------------------------------------------------|--------------------------------------------------------------|
+| 1         | Linear Regression, RF| ~0.95                         | `budget`, `runtime`, `vote_average`, `revenue` | Baseline features should provide some signal              | Models show limited predictive power                        |
+| 2         | Linear Regression, RF| LR: 1.02, RF: 0.96            | + `budget_per_minute`                         | Budget per minute might correlate better                  | Slight RF improvement, LR worse                            |
+| 3         | Linear Regression, RF| LR: 1.00, RF: 0.95            | + `release_year`, `title_length`, `vote_ratio` | Time and vote strength should add signal                  | No major improvement                                        |
+| 4         | Linear Regression, RF| both ~0.95                    | Only `vote_average`                           | Test if `vote_average` alone is strong enough             | Surprisingly powerful alone                                |
+| 5         | Linear Regression, RF| both ~0.95                    | + top genres and studios                      | Content/producer info might be useful                     | Same RMSE, but more diverse features                       |
+| 6         | Linear Regression, RF| RF: Train: 0.92, Test: 0.95   | Combined all features                         | Combination may stabilize variance                        | Stable, but `vote_average` dominates                       |
+| 7         | RF + GridSearch      | Train: 0.93, Test: 0.95       | Same as It. 6 + tuned hyperparams             | Optimization should help                                 | Best performing model, but no breakthrough                |
+| 8         | RF (no `vote_average`)| Train: 0.94, Test: 0.95       | Without `vote_average`                        | Fairer feature distribution for app deployment            | Same performance, better feature spread → used in app  |
 ---
 
 ## References  
